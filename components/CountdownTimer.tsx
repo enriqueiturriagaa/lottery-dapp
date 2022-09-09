@@ -1,11 +1,6 @@
 import React from "react";
 import Countdown from "react-countdown";
-
-import {
-  useContract,
-  useContractCall,
-  useContractData,
-} from "@thirdweb-dev/react";
+import { useContract, useContractData } from "@thirdweb-dev/react";
 
 type Props = {
   hours: number;
@@ -18,7 +13,10 @@ function CountdownTimer() {
   const { contract } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
   );
-  const { data: expiration } = useContractData(contract, "expiration");
+  const { data: expiration, isLoading: isLoadingExpiration } = useContractData(
+    contract,
+    "expiration"
+  );
   const renderer = ({ hours, minutes, seconds, completed }: Props) => {
     if (completed) {
       return (
@@ -67,7 +65,7 @@ function CountdownTimer() {
 
   return (
     <div>
-      <Countdown date={new Date(expiration * 100)} renderer={renderer} />
+      <Countdown date={new Date(expiration * 1000)} renderer={renderer} />
     </div>
   );
 }

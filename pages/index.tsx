@@ -17,6 +17,7 @@ import { ethers } from "ethers";
 import { currency } from "../constants";
 import { formatEther } from "ethers/lib/utils";
 import CountdownTimer from "../components/CountdownTimer";
+import toast from "react-hot-toast";
 
 const Home: NextPage = () => {
   const address = useAddress();
@@ -39,6 +40,33 @@ const Home: NextPage = () => {
     contract,
     "ticketCommission"
   );
+  const { mutateAsync: BuyTickets } = useContractCall(contract, "BuyTickets");
+
+  const handleClick = async () => {
+    if (!ticketPrice) return;
+    const notification = toast.loading("Buying your toickets...");
+
+    try {
+      const data = await BuyTickets([
+        {
+          value: ethers.utils.parseEther(
+            (
+              Number(ethers.utils.formatEther(ticketPrice)) * quantity
+            ).toString()
+          ),
+        },
+      ]);
+
+      toast.success("Tickets purchased successfuly!", {
+        id: notification,
+      });
+    } catch (err) {
+      toast.error("Whooops something went wrong!", {
+        id: notification,
+      });
+      console.error("Contract call failure", err);
+    }
+  };
 
   if (isLoading) return <Loading />;
   if (!address) return <Login />;
@@ -133,9 +161,14 @@ const Home: NextPage = () => {
                   expiration?.toString() < Date.now().toString() ||
                   remainingTickets?.toNumber() === 0
                 }
-                className="mt-5 w-full bg-gradient-to-br from-orange-500 to-emerald-600 px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600  disabled:cursor-not-allowed disabled:text-gray-400"
+                onClick={handleClick}
+                className="mt-5 w-full bg-gradient-to-br font-semibold from-orange-500 to-emerald-600 px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600  disabled:cursor-not-allowed disabled:text-gray-400"
               >
-                Buy Tickets
+                Buy {quantity} Tickets for{" "}
+                {ticketPrice &&
+                  Number(ethers.utils.formatEther(ticketPrice.toString())) *
+                    quantity}{" "}
+                {currency}
               </button>
             </div>
           </div>
