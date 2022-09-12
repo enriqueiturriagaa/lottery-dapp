@@ -5,7 +5,7 @@ function Login() {
   const connectWithMetamask = useMetamask();
 
   return (
-    <div className="bg-[#091B18] min-h-screen flex flex-col items-center justify-center text-center">
+    <div className="bg-[#090c1b] min-h-screen flex flex-col items-center justify-center text-center">
       <div className="flex flex-col items-center mb-10">
         <img
           className="rounded-full h-64 w-64 mb-10"

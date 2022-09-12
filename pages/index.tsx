@@ -80,7 +80,7 @@ const Home: NextPage = () => {
 
   const handleClick = async () => {
     if (!ticketPrice) return;
-    const notification = toast.loading("Buying your toickets...");
+    const notification = toast.loading("Buying your tickets...");
 
     try {
       const data = await BuyTickets([
@@ -119,17 +119,20 @@ const Home: NextPage = () => {
     }
   };
 
+  // Returns START HERE =======================================================
+
   if (isLoading) return <Loading />;
   if (!address) return <Login />;
+
   return (
-    <div className="bg-[#091B18] min-h-screen flex flex-col p-5">
+    <div className="bg-[#090c1b] min-h-screen flex flex-col p-5">
       <Head>
         <title>LOTT3RY</title>
       </Head>
 
       <div className="flex-1">
         <Header />
-        <Marquee className="bg-[#0a1f1c] p-5 mb-5" gradient={false} speed={100}>
+        <Marquee className="bg-[#151c3f] p-5 mb-5" gradient={false} speed={100}>
           <div className=" flex space-x-2 mx-10 text-white font-bold">
             <h4>Last Winner: {lastWinner?.toString()}</h4>
             <h4>
@@ -199,7 +202,7 @@ const Home: NextPage = () => {
                   {currency}
                 </p>
               </div>
-              <div className="flex text-white items-center space-x-2 bg-[#091b18] border-[#004337] border p-4">
+              <div className="flex text-white items-center space-x-2 bg-[#0a091b] border-[#5089a3] border p-4 rounded-lg">
                 <p>TICKETS</p>
                 <input
                   className="flex w-full bg-transparent text-right outline-none"
@@ -212,7 +215,7 @@ const Home: NextPage = () => {
               </div>
 
               <div className="space-y-2 mt-5">
-                <div className="flex items-center justify-between text-emerald-300 text-sm italic font-extrabold">
+                <div className="flex items-center justify-between text-[#5089a3] text-sm italic font-extrabold">
                   <p>Total cost of tickets</p>
                   <p>
                     {ticketPrice &&
@@ -223,7 +226,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between text-emerald-300 text-xs italic">
+                <div className="flex items-center justify-between text-[#5089a3] text-xs italic">
                   <p>Service fees</p>
                   <p>
                     {ticketComission &&
@@ -234,7 +237,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between text-emerald-300 text-xs italic">
+                <div className="flex items-center justify-between text-[#5089a3] text-xs italic">
                   <p>+Network Fees</p>
                   <p>TBC</p>
                 </div>
@@ -246,7 +249,7 @@ const Home: NextPage = () => {
                   remainingTickets?.toNumber() === 0
                 }
                 onClick={handleClick}
-                className="mt-5 w-full bg-gradient-to-br font-semibold from-orange-500 to-emerald-600 px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600  disabled:cursor-not-allowed disabled:text-gray-400"
+                className="mt-5 w-full bg-gradient-to-br font-semibold from-blue-500 to-emerald-600 px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600  disabled:cursor-not-allowed disabled:text-gray-400"
               >
                 Buy {quantity} Tickets for{" "}
                 {ticketPrice &&
@@ -284,7 +287,7 @@ const Home: NextPage = () => {
           className="h-10 w-10 filter hue-rotate-90 opacity-20 rounded-full"
           src="https://images2.imgbox.com/d4/89/P9MJFmNa_o.png"
         />
-        <p className="text-xs text-emerald-900 pl-5">
+        <p className="text-xs text-[#5089a3] pl-5">
           DISCLAMER: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Nullam malesuada lacus sit amet lorem lacinia, a finibus erat
           lobortis. Fusce mollis metus nunc, iaculis malesuada urna blandit

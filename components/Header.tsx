@@ -17,7 +17,7 @@ function Header() {
         />
         <div>
           <h1 className="text-lg text-white font-bold">LOTT3RY</h1>
-          <p className="text-xs text-emerald-500 truncate">
+          <p className="text-xs text-[#5089a3] truncate">
             User: {address?.substring(0, 5)}....
             {address?.substring(address.length, address.length - 5)}
           </p>
@@ -25,14 +25,14 @@ function Header() {
       </div>
 
       <div className="hidden md:flex  md:col-span-3 items-center justify-center rounded-md">
-        <div className="bg-[#0A1F1c] p-4 space-x-2">
+        <div className="bg-[#101533] p-4 space-x-2">
           <NavButton isActive title="Buy Tickets" />
           <NavButton onClick={disconnect} title="Log Out" />
         </div>
       </div>
 
       <div className="flex flex-col ml-auto text-right">
-        <Bars3BottomRightIcon className="h-8 w-8 mx-auto text-white cursor-pointer" />
+        {/* <Bars3BottomRightIcon className="h-8 w-8 mx-auto text-white cursor-pointer" /> */}
         <span className="md:hidden">
           <NavButton onClick={disconnect} title="Log Out" />
         </span>

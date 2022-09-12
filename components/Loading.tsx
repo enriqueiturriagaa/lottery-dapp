@@ -3,7 +3,7 @@ import { PropagateLoader } from "react-spinners";
 
 function Loading() {
   return (
-    <div className="bg-[#091B18] h-screen flex flex-col items-center justify-center text-center">
+    <div className="bg-[#090c1b] h-screen flex flex-col items-center justify-center text-center">
       <div className="flex items-center space-x-2 mb-10">
         <img
           className="rounded-full h-64 w-64"

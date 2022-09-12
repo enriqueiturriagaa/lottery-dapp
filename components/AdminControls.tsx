@@ -96,7 +96,7 @@ function AdminControls() {
 
   //   RETURN STARTS HERE ------------------------------
   return (
-    <div className="text-white text-center px-5 py-3 rounded-md border-emerald-300/20 border ">
+    <div className="text-white text-center px-5 py-3 rounded-md border-[#002a43] border ">
       <h2 className="font-bold">Admin controls</h2>
       <p className="mb-5">
         Total Comission to be withdrawn:{" "}
